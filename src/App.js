@@ -1,8 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import './ListItems'
-import ListItems from './ListItems';
+import './components/ListItems'
+import ListItems from './components/ListItems';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,13 +17,9 @@ class App extends React.Component {
         key: ""
       }
     }
-    this.handleInput = this.handleInput.bind(this)
-    this.addItem = this.addItem.bind(this);
-    this.deleteItem = this.deleteItem.bind(this);
-    this.setUpdate = this.setUpdate.bind(this);
   }
 
-  handleInput(e) {
+  handleInput = (e) => {
     this.setState({
       currentItem: {
         text: e.target.value,
@@ -33,7 +28,7 @@ class App extends React.Component {
     })    
   }
 
-  addItem(e) {
+  addItem = (e) => {
     e.preventDefault();
     const newItem = this.state.currentItem;
     console.log(newItem);
@@ -50,7 +45,7 @@ class App extends React.Component {
     }
   }
 
-  deleteItem(key){
+  deleteItem = (key) => {
     const filteredItems = this.state.items.filter(item => 
       item.key !== key);
       this.setState({
@@ -58,7 +53,7 @@ class App extends React.Component {
       })
   }
 
-  setUpdate(text, key){
+  setUpdate = (text, key) => {
     const items = this.state.items;
     items.map( item => {
       if(item.key===key){
